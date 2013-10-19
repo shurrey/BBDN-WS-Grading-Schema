@@ -2,7 +2,6 @@ apply plugin: "java"
 apply plugin: "war"
 apply plugin: "maven"
 apply plugin: "eclipse"
-apply plugin: "idea"
 
 // Uncomment if your project has an API JAR
 //apply from: "api.gradle"
@@ -13,7 +12,7 @@ version "1.0-SNAPSHOT"
 
 ext {
   learnVersion = "9.1.120113.0"
-  deployServer = "localhost:8000"
+  deployServer = "ec2-50-16-32-99.compute-1.amazonaws.com/"
   deployInstance = "BBLEARN"
 }
 
@@ -35,8 +34,11 @@ dependencies {
 
   // Dependencies are libraries needed to build, but should not be included in the B2 WAR.
   // You should NEVER include Learn JARs (other than webapis) in your B2.
-  // providedCompile( "blackboard.platform:bb-platform:$ext.learnVersion" ) { transitive = false }
-  // providedCompile( "blackboard.platform:bb-taglibs:$ext.learnVersion" ) { transitive = false }
+  providedCompile( "blackboard.platform:bb-platform:$ext.learnVersion" ) { transitive = false }
+  providedCompile( "blackboard.platform:bb-taglibs:$ext.learnVersion" ) { transitive = false }
+  providedCompile( "blackboard.platform:bb-ws-gradebook:$ext.learnVersion" ) { transitive = false }
+  providedCompile( "blackboard.platform:bb-ws-context:$ext.learnVersion" ) { transitive = false }
+  providedCompile( "blackboard.platform:bb-ws-util:$ext.learnVersion" ) { transitive = false }
 
   // Building a Spring B2?  Use our Spring APIs!
   // compile "blackboard.platform:bb-spring-webapi:10.1"
