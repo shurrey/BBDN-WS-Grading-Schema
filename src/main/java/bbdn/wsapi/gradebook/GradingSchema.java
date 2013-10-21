@@ -1,29 +1,14 @@
 package bbdn.wsapi.gradebook;
 
-import blackboard.data.course.CourseMembership;
-import blackboard.data.course.CourseMembership.Role;
 import blackboard.persist.Id;
-import blackboard.platform.context.ContextManagerFactory;
 import blackboard.platform.security.AccessException;
-import blackboard.util.GeneralUtil;
-import blackboard.ws.context.ContextWS;
-import blackboard.ws.context.ContextWSFactory;
 import blackboard.ws.gradebook.*;
-import blackboard.ws.util.UtilWS;
-import blackboard.ws.util.UtilWSFactory;
-
-import java.util.*;
-import java.util.Map.Entry;
-
-import javax.servlet.http.HttpServletRequest;
 
 public class GradingSchema {
 
 private Id _courseId;
 private String _courseIdStr;
-private boolean _foundOurColumn;
-
-	public GradingSchema()
+public GradingSchema()
 	{
 		this( null );
 	}
@@ -32,7 +17,6 @@ private boolean _foundOurColumn;
 	{
 		_courseId = courseId;
   		_courseIdStr = ( _courseId == null ? "" : _courseId.toExternalString() );
-  		_foundOurColumn = false;
 	}
 	
 	public String doGradebookSchema()
